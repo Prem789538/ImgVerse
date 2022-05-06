@@ -1,5 +1,5 @@
 # ImgVerse
-Your own photo gallery webapp
+Your own photo gallery Webapp
 
 
 
