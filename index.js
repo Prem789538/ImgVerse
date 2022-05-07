@@ -3,10 +3,13 @@ const path = require('path')
 const PORT = 3000
 const app = express()
 
+
+
 app.set('view engine','ejs')
 app.set('views',path.join(__dirname,'templates'))
 
 app.use(express.urlencoded())
+
 app.use(express.static(path.join(__dirname,"static")))
 app.use('/',require(path.join(__dirname,'routes/pics')))
 

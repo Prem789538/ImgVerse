@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+</head>
+<body>
+    <% for(let pic of pics){ %>
+    <div>
+        <img src="img/<%= pic %>" alt="Can't load" class="img_box" width="500" height="600">
+    </div>
+
+    <% } %>
+
+    <div>
+        <% let nums = Math.ceil(total/30) %>
+        <% for(let i=1;i<=nums;i++){ %>
+            <span>
+                <a href="pages/<%= i %>"><%= i %></a>
+            </span>
+        <% } %>
+    </div>
+</body>
+</html>

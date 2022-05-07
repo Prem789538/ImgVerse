@@ -14,6 +14,10 @@ router.post('/home',(req,res)=>{
     }
 })
 
+router.get('add-pics',(req,res)=>{
+
+})
+
 router.post('/create-usr',(req,res)=>{
     //backend work
     res.redirect('/')   
@@ -22,9 +26,13 @@ router.post('/create-usr',(req,res)=>{
 router.get('/signup',(req,res)=>{
     res.render('signup')
 })
-router.post('/photos',(req,res)=>{
-    
+router.get('/photos',(req,res)=>{
+    // const photos = getPhotosFromDB()
+    const photos = ['sc.png','sc2.png','sc3.png'];
+
+    res.render('photos.ejs',{pics:photos,total:photos.length+100})
 })
+
 
 router.get('/forgot-passwd',(req,res)=>{
     res.render('forgot_password')
