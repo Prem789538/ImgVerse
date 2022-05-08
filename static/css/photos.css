@@ -1,0 +1,17 @@
+/* ul {
+    display:  flex;
+    flex-wrap: wrap;
+} */
+
+li {
+    height: 200px;
+    width: 200px;
+    flex-grow: 1;
+    margin: 5px;
+    display: inline-block;
+}
+
+img{
+    object-fit: cover;
+    vertical-align: bottom;
+}

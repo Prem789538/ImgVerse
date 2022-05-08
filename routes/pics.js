@@ -1,5 +1,25 @@
 const express = require('express')
+const fs = require('fs')
 const router = express.Router()
+const path = require('path')
+const maxUploadLimit = 30;
+
+const multer = require('multer')
+const uploadPath = path.join(__dirname,"../static/img/")
+
+const fileStorageEngine = multer.diskStorage({
+    destination: (req,file,cb) => {
+        cb(null,uploadPath)
+    },
+    filename: (req,file,cb)=>{
+        cb(null,Date.now() + "__" + file.originalname)
+        console.log(file)
+    },
+})
+
+const upload = multer({storage: fileStorageEngine})
+
+
 
 router.get('/',(req,res)=>{
     res.render('login')
@@ -14,8 +34,18 @@ router.post('/home',(req,res)=>{
     }
 })
 
-router.get('add-pics',(req,res)=>{
 
+//security issue (basically paap)
+router.get('/home',(req,res)=>{
+    res.render('home')
+})
+
+router.get('/add-pics',(req,res)=>{
+    res.render('photoselector')
+})
+
+router.post('/save-photos',upload.array('myFiles',maxUploadLimit),(req,res)=>{
+    res.redirect('/home')
 })
 
 router.post('/create-usr',(req,res)=>{
@@ -28,9 +58,11 @@ router.get('/signup',(req,res)=>{
 })
 router.get('/photos',(req,res)=>{
     // const photos = getPhotosFromDB()
-    const photos = ['sc.png','sc2.png','sc3.png'];
+    
+    const photos = fs.readdirSync(path.join(__dirname,"../static/img"))
+    console.log(photos.length)
 
-    res.render('photos.ejs',{pics:photos,total:photos.length+100})
+    res.render('photos.ejs',{pics:photos,total:photos.length})
 })
 
 

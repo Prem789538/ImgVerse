@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Drag and Drop File Upload</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/photoselecter.css">
+</head>
+
+<body>
+    <form action="/save-photos" method="post" enctype="multipart/form-data">
+  <!-- <div class="drop-zone">
+    <span class="drop-zone__prompt">Drop file here or click to upload</span>
+  </div> -->
+  <input type="file" name="myFiles" class="drop-zone__inpu" multiple>
+  <div class="button-holder">
+  <input type="submit" value="Add Photos" id="submit-button">
+  </div>
+</form>
+  <!-- <script src="js/photouploader.js"></script> -->
+</body>
